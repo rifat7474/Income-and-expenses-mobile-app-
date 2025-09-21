@@ -21,7 +21,7 @@ export default function EditTransactionScreen() {
         setIsIncome(transaction.isIncome);
       }
     }
-  }, [id]);
+  }, [id, getTransactionById]);
 
   const handleUpdateTransaction = () => {
     if (!description || !amount) {

@@ -35,7 +35,12 @@ export default function TransactionsScreen() {
           <View style={styles.transactionItem}>
             <View>
               <Text style={styles.itemDescription}>{item.description}</Text>
-              <Text style={{ color: item.isIncome ? 'green' : 'red' }}>
+              {item.category && (
+                <Text style={{ fontSize: 12, color: item.category.color, fontWeight: '600', marginTop: 4 }}>
+                  {item.category.name}
+                </Text>
+              )}
+              <Text style={[styles.itemAmount, { color: item.isIncome ? 'green' : 'red' }]}>
                 {item.isIncome ? '+' : '-'} ${item.amount.toFixed(2)}
               </Text>
             </View>
@@ -60,11 +65,12 @@ export default function TransactionsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
+    paddingTop: 20,
     paddingHorizontal: 20,
+    backgroundColor: '#f5f5f5',
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
@@ -74,17 +80,26 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    padding: 10,
+    padding: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
+    borderBottomColor: '#e0e0e0',
+    backgroundColor: 'white',
+    borderRadius: 8,
+    marginBottom: 10,
   },
   itemDescription: {
     fontSize: 16,
+    fontWeight: '500',
+  },
+  itemAmount: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 4,
   },
   buttonsContainer: {
     flexDirection: 'row',
   },
   button: {
     marginLeft: 15,
-  }
+  },
 });

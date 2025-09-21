@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Category } from '@/app/data/categories';
 
 const TRANSACTIONS_STORAGE_KEY = 'transactions';
 
@@ -8,6 +9,7 @@ export interface Transaction {
   description: string;
   amount: number;
   isIncome: boolean;
+  category?: Category;
 }
 
 interface TransactionsContextType {
